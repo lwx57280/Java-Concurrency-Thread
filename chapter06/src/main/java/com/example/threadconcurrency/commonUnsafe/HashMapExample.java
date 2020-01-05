@@ -2,11 +2,9 @@ package com.example.threadconcurrency.commonUnsafe;
 
 import com.example.threadconcurrency.annoations.NotThreadSafe;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
