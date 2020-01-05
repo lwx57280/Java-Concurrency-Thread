@@ -10,7 +10,7 @@
     <groupId>com.example</groupId>
     <artifactId>concurrency</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>concurrency</name>
+    <name>chapter06</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
