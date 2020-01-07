@@ -9,7 +9,7 @@ public class ThreadPrintData {
     private static CountDownLatch countDownLatch = new CountDownLatch(2);
     private static Object lock = new Object();
 
-    private static volatile Integer i = 0;
+    private static Integer i = 0;
     private static final int TOTAL = 100;
 
     public static void main(String[] args) throws InterruptedException {
