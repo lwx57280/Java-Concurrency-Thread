@@ -2,36 +2,39 @@ package com.example.threadconcurrency.aqs;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
+/**
+ * 信号量控制（可以很容易的控制某个资源可被同时访问的个数）
+ */
 @Slf4j
-public class CountDownLatchExample1 {
-    private static int threadCount = 200;
+public class SemaphoreExample3 {
+    private static int threadCount = 20;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
-        final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
-        for (int i = 0; i < threadCount; i++) {
+        // 允许的并发数
+        final Semaphore semaphore = new Semaphore(3);
+            for (int i = 0; i < threadCount; i++) {
             final int threadNum = i;
             executorService.execute(() -> {
                 try {
-                    test(threadNum);
+                    if (semaphore.tryAcquire()) {   // 尝试获取一个许可
+                        test(threadNum);
+                        semaphore.release();    // 释放一个许可
+                    }
                 } catch (InterruptedException e) {
                     log.error("InterruptedException", e);
-                } finally {
-                    countDownLatch.countDown();
                 }
             });
         }
-        countDownLatch.await();
         log.info("finish!");
         executorService.shutdown();
     }
-
     private static void test(int threadNum) throws InterruptedException {
-        Thread.sleep(100);
+        Thread.sleep(1000);
         log.info("{}", threadNum);
     }
 
