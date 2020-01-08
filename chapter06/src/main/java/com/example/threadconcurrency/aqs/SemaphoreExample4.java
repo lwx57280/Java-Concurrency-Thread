@@ -18,7 +18,7 @@ public class SemaphoreExample4 {
         ExecutorService executorService = Executors.newCachedThreadPool();
         // 允许的并发数
         final Semaphore semaphore = new Semaphore(3);
-            for (int i = 0; i < threadCount; i++) {
+        for (int i = 0; i < threadCount; i++) {
             final int threadNum = i;
             executorService.execute(() -> {
                 try {
@@ -34,6 +34,7 @@ public class SemaphoreExample4 {
         log.info("finish!");
         executorService.shutdown();
     }
+
     private static void test(int threadNum) throws InterruptedException {
         Thread.sleep(1000);
         log.info("{}", threadNum);
