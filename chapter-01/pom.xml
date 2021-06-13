@@ -9,7 +9,7 @@
         <version>2.0.5.RELEASE</version>
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>concurrency</artifactId>
+    <artifactId>chapter-01</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <description>Demo project for Spring Boot</description>
