@@ -2,7 +2,15 @@ package com.example.concurrency.classlayout;
 
 
 import org.openjdk.jol.info.ClassLayout;
-
+/**
+ * @description:    MarkWord对象头
+ * @author:         cong zhi
+ * @createDate:     2022/5/29 11:59
+ * @updateUser:     cong zhi
+ * @updateDate:     2022/5/29 11:59
+ * @updateRemark:   修改内容
+ * @version:        v1.0
+ */
 public class ClassLayoutDemo {
 
     Object object=new Object();
