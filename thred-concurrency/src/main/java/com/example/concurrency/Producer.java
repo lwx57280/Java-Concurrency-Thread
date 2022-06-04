@@ -2,7 +2,7 @@ package com.example.concurrency;
 
 import java.util.Queue;
 
-public class Producer implements Runnable{
+public class Producer implements Runnable {
 
     private Queue<String> bags;
 
@@ -15,7 +15,7 @@ public class Producer implements Runnable{
 
     @Override
     public void run() {
-        int i=0;
+        int i = 0;
         while (true) {
             i++;
             synchronized (bags) {   // 抢占锁
@@ -33,7 +33,7 @@ public class Producer implements Runnable{
                     e.printStackTrace();
                 }
 
-                System.out.println("生产者生成："+i);
+                System.out.println("生产者生成：" + i);
                 bags.add("bag" + i); // 生成了bag
                 bags.notify();      // 表示当前已经生产了数据，提示消费者可以消费
 
