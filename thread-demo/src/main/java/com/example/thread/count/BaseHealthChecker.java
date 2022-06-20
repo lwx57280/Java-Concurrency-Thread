@@ -1,17 +1,14 @@
 package com.example.thread.count;
 
-import java.util.concurrent.CountDownLatch;
-
 public abstract class BaseHealthChecker implements Runnable {
     /**
      * 服务名称
      */
     private String serviceName;
     private Boolean serviceUp;
-    private CountDownLatch countDownLatch;
 
-    public BaseHealthChecker(CountDownLatch countDownLatch, String serviceName) {
-        this.countDownLatch = countDownLatch;
+
+    public BaseHealthChecker(String serviceName) {
         this.serviceName = serviceName;
     }
 
@@ -36,11 +33,6 @@ public abstract class BaseHealthChecker implements Runnable {
             serviceUp = true;
         } catch (Exception e) {
             serviceUp = false;
-        } finally {
-            if (countDownLatch != null) {
-                // 释放
-                countDownLatch.countDown();
-            }
         }
     }
 

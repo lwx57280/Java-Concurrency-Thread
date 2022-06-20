@@ -12,8 +12,11 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CacheHealthChecker extends BaseHealthChecker {
 
+    private CountDownLatch countDownLatch;
+
     public CacheHealthChecker(CountDownLatch countDownLatch) {
-        super(countDownLatch, "CacheHealthChecker");
+        super("CacheHealthChecker");
+        this.countDownLatch = countDownLatch;
     }
 
     @Override
@@ -25,6 +28,8 @@ public class CacheHealthChecker extends BaseHealthChecker {
         } catch (Exception e) {
             throw e;
         }
+        // 释放
+        countDownLatch.countDown();
         System.out.println(this.getServiceName() + "健康状态正常！");
     }
 

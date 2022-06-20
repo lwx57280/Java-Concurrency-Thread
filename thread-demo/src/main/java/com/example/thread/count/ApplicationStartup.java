@@ -9,13 +9,12 @@ public class ApplicationStartup {
 
     private static List<BaseHealthChecker> services;
 
-    private static CountDownLatch countDownLatch = null;
+    private static CountDownLatch countDownLatch = new CountDownLatch(2);
 
     static {
         services = new ArrayList<>();
         services.add(new CacheHealthChecker(countDownLatch));
         services.add(new DataBaseHealthChecker(countDownLatch));
-        countDownLatch = new CountDownLatch(services.size());
     }
 
     private final static ApplicationStartup INSTANCE = new ApplicationStartup();
