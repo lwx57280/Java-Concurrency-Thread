@@ -36,7 +36,7 @@ public abstract class BaseHealthChecker implements Runnable {
         }
     }
 
-    public Boolean getServiceUp() {
+    public Boolean isServiceUp() {
         return serviceUp;
     }
 

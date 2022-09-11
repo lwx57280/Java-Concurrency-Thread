@@ -7,7 +7,7 @@ public class DataBaseHealthChecker extends BaseHealthChecker {
     private CountDownLatch countDownLatch;
 
     public DataBaseHealthChecker(CountDownLatch countDownLatch) {
-        super( "DataBaseHealthChecker");
+        super("DataBaseHealthChecker");
         this.countDownLatch = countDownLatch;
     }
 
@@ -24,4 +24,6 @@ public class DataBaseHealthChecker extends BaseHealthChecker {
         countDownLatch.countDown();
         System.out.println(this.getServiceName() + "健康状态正常！");
     }
+
+
 }

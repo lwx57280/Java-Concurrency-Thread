@@ -12,7 +12,7 @@ public class ApplicationStartup {
     private static CountDownLatch countDownLatch = new CountDownLatch(2);
 
     static {
-        services = new ArrayList<>();
+        services = new ArrayList<BaseHealthChecker>();
         services.add(new CacheHealthChecker(countDownLatch));
         services.add(new DataBaseHealthChecker(countDownLatch));
     }
@@ -27,8 +27,11 @@ public class ApplicationStartup {
     }
 
     public static boolean checkExternalService() throws InterruptedException {
-        for (BaseHealthChecker bh : services) {
-            new Thread(bh).start(); // 针对每个服务采用线程执行
+        for (final BaseHealthChecker v : services) {
+            //  new Thread(v).start(); // 针对每个服务采用线程执行
+            if (v.isServiceUp()) {
+                return false;
+            }
 
         }
         countDownLatch.await();
