@@ -1,6 +1,6 @@
 package com.example.thread.requestdemo;
 
-public class Request {
+public class  Request {
 
     private String name;
 
